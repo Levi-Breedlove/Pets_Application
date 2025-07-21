@@ -1,0 +1,29 @@
+- model: pets_app.VaccinationCard
+  pk: 3
+  fields:
+    rabies: 2022-06-01 
+
+- model: pets_app.Breed
+  pk: 4
+  fields: 
+    name: Cavalier King Charles Spaniel
+
+- model: pets_app.Pet
+  pk: 4
+  fields:
+    name: Max
+    gender: F
+    birth: 2006-03-24
+    owner: Ashley
+    weight: 23
+    height: 9
+    card: 3
+    breed: [4]
+
+- model: pets_app.VetVisit
+  pk: 1
+  fields:
+    pet: 4
+    vet: Jane Doe
+    date: 2023-04-30
+    notes: healthy puppy

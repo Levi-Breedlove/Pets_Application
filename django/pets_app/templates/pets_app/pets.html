@@ -1,0 +1,22 @@
+{% extends "pets_app/base.html" %}
+{% block content %}
+<div class="pets" id="pets-link">
+
+    <h2>Pets</h2>
+    <table>
+        <tr>
+            {% for p in pets %}
+            {% if forloop.counter0|divisibleby:3 %}
+        </tr>
+        <tr>
+            {% endif %}
+            <td><a href="{% url 'pet' p.id %}">
+                <img src="{{ p.picture.url }}" width="120" />
+                <p>{{ p.name }}</a></p>
+                <p>{{ p.owner }}</p>
+            </td>
+            {% endfor %}
+        </tr>
+    </table>
+</div>
+{% endblock content %}

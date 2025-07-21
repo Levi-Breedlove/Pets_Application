@@ -1,0 +1,32 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Pets Application</title>
+    <link rel="icon" href="{% static 'favicon.ico' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+</head>
+
+<body>
+    <div class="banner">
+        <table>
+            <tr>
+                <td><img src="{% static 'logo-white.png' %}"></td>
+                <td>Pets Application</td>
+            </tr>
+        </table>
+    </div>
+    <div class="nav-menu">
+        <a href="{% url 'index' %}">Home</a>
+    </div>
+
+{% block content %}
+{% endblock content %}
+
+    <div class="footer">
+        <p>&copy; {% now "Y" %}, Amazon Web Services, Inc. or its Affiliates. All rights reserved.</p>
+    </div>
+</body>
+
+</html>

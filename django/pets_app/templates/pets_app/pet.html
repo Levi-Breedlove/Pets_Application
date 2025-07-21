@@ -1,0 +1,42 @@
+{% extends "pets_app/base.html" %}
+{% block content %}
+<div class="pet">
+    <h2>{{ pet.name }}</h2>
+    <div class="pet">
+        <img src="{{ pet.picture.url }}" width="200" /><br/>
+        Gender: {{ pet.gender }}<br/>
+        Birth: {{ pet.birth|date:"Y-M-d" }}<br/>
+        Breed: {% for b in pet.breed.all %}
+            {% if forloop.last %}
+                {{ b.name|lower }}
+            {% else %}
+                {{ b.name|lower }},
+            {% endif %}
+        {% endfor %}<br/>
+        Owner: {{ pet.owner|title }}<br/>
+        <br/>
+        Weight: {{ pet.weight|floatformat }} lb<br/>
+        Height: {{ pet.height|floatformat }} in<br/>
+        <br/>
+        Vaccines: rabies {{ pet.card.rabies }} / 
+            hepatitis {{ pet.card.hepatitis|default_if_none:"never" }} / 
+            borrelia {{ pet.card.borrelia|default_if_none:"never" }} / 
+            distemper {{ pet.card.distemper|default_if_none:"never" }}<br/>
+        <br/>
+        Vet visits: 
+        <ul>
+            {% for vv in pet.vetvisit_set.all %}
+                <li>{{ vv.date|date:"Y-M-d" }}: vet {{ vv.vet|title }}
+                    {% if vv.notes %}
+                        wrote <i>{{ vv.notes|striptags }}</i>
+                    {% endif %}
+                </li>
+            {% endfor %}
+        </ul>
+        <a class="btn btn-info pull-right" 
+            href="{% url 'visit' pet.id %}">
+            New visit today with rabies vaccine
+        </a><br/><br/>
+    </div>
+</div>
+{% endblock content %}
