@@ -1,29 +1,31 @@
-from django.shortcuts import render
-from .models import Pet, VetVisit
-from datetime import datetime
+from datetime import date
+from django.shortcuts import get_object_or_404, render
+from .models import Pet, VetVisit, VaccinationCard
 
-def listPets(request):
-    context = {'pets': Pet.objects.all()}
-    return render(request, "pets_app/pets.html", context)
 
-def pet(request, pet_id):
-    context = {'pet': Pet.objects.filter(id=pet_id).first()}
-    return render(request, "pets_app/pet.html", context)
-    
+def list_pets(request):
+    return render(request, "pets_app/pets.html", {"pets": Pet.objects.all()})
+
+
+def pet_detail(request, pet_id):
+    pet = get_object_or_404(Pet, pk=pet_id)
+    return render(request, "pets_app/pet.html", {"pet": pet})
+
+
 def visit(request, pet_id):
-    pet = Pet.objects.filter(id=pet_id).first()
-    lastvisit = pet.vetvisit_set.last()
+    pet = get_object_or_404(Pet, pk=pet_id)
 
-    # set vet from last visit or default to unknow
-    vet = "unknown"
-    if lastvisit:
-        vet = pet.vetvisit_set.last().vet
+    # ensure card exists
+    card, _ = VaccinationCard.objects.get_or_create(pet=pet)
 
-    # add a rabies visit today, unless there was visit today already
-    if lastvisit is None or (lastvisit and not lastvisit.is_today):
-        newvisit = VetVisit(pet=pet, vet=vet, notes="rabies vaccination")
-        newvisit.save()
-        pet.card.rabies = datetime.today().strftime('%Y-%m-%d')
-        pet.card.save()
-    context = {'pet': pet}
-    return render(request, "pets_app/pet.html", context)
+    # create visit if none today
+    last_visit = pet.vetvisit_set.last()
+    if last_visit is None or not last_visit.is_today:
+        vet_name = last_visit.vet if last_visit else "Unknown"
+        VetVisit.objects.create(pet=pet, vet=vet_name, notes="rabies vaccination")
+
+        if card.rabies is None:
+            card.rabies = date.today()
+            card.save(update_fields=["rabies"])
+
+    return render(request, "pets_app/pet.html", {"pet": pet})

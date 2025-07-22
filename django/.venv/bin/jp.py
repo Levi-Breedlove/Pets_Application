@@ -1,4 +1,4 @@
-#!/home/ubuntu/environment/django/.venv/bin/python
+#!/workspaces/Pets_Application/django/.venv/bin/python
 
 import sys
 import json

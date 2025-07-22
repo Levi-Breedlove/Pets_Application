@@ -1,9 +1,9 @@
 from django.urls import path
-from pets_app import views
+from . import views
 
 urlpatterns = [
-    path("", views.listPets, name="petsList"),
-    path("index/", views.listPets, name="index"),
-    path("pet/<str:pet_id>", views.pet, name="pet"),
-    path("visit/<str:pet_id>", views.visit, name="visit"),
+    path("", views.list_pets, name="pets_list"),
+    path("", views.list_pets, name="index"), 
+    path("pet/<int:pet_id>/", views.pet_detail, name="pet"),
+    path("visit/<int:pet_id>/", views.visit, name="visit_today"),
 ]

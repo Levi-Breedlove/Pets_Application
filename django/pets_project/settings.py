@@ -11,8 +11,12 @@ DEBUG = os.getenv("DJANGO_DEBUG", "1") == "1"
 if DEBUG:
     ALLOWED_HOSTS = ["*"]
     CSRF_TRUSTED_ORIGINS = [
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
+        'https://*.amazonaws.com', 
+        'http://127.0.0.1', 
+        'http://localhost', 
+        'http://*.elasticbeanstalk.com',  
+        'https://localhost:8000',
+        'https://127.0.0.1:8000'
     ]
 else:
     ALLOWED_HOSTS = [

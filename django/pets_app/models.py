@@ -17,7 +17,8 @@ class VaccinationCard(models.Model):
     distemper = models.DateField(null=True, blank=True)
 
     def __str__(self):
-        return str(self.pet) + " - " + str(self.rabies)
+        pet_name = getattr(self, "pet", None)
+        return f"{pet_name or 'unlinked card'} – rabies {self.rabies}"
 
 class Gender(models.TextChoices):
         FEMALE = "F", _("Female")
@@ -30,7 +31,7 @@ class Pet(models.Model):
     owner = models.CharField(max_length=100)
     weight = models.DecimalField(max_digits=8, decimal_places=2, null=True)
     height = models.DecimalField(max_digits=8, decimal_places=2, null=True)
-    card = models.OneToOneField(VaccinationCard, on_delete=models.CASCADE)
+    card = models.OneToOneField(VaccinationCard, on_delete=models.CASCADE, null=True, blank=True)
     breed = models.ManyToManyField(Breed, blank=True)
     picture = models.ImageField(max_length=255, null=True)
     

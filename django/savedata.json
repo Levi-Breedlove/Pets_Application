@@ -27,6 +27,24 @@
   }
 },
 {
+  "model": "pets_app.breed",
+  "pk": 5,
+  "fields": {
+    "name": "Rabbit",
+    "weight": "0.00",
+    "height": "0.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 9,
+  "fields": {
+    "name": "Chihuahua Yorkie",
+    "weight": "0.00",
+    "height": "0.00"
+  }
+},
+{
   "model": "pets_app.vaccinationcard",
   "pk": 1,
   "fields": {
@@ -51,6 +69,26 @@
   "pk": 3,
   "fields": {
     "rabies": "2022-06-01",
+    "hepatitis": null,
+    "borrelia": null,
+    "distemper": null
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 4,
+  "fields": {
+    "rabies": "2025-07-21",
+    "hepatitis": null,
+    "borrelia": null,
+    "distemper": null
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 5,
+  "fields": {
+    "rabies": "2025-07-21",
     "hepatitis": null,
     "borrelia": null,
     "distemper": null
@@ -108,6 +146,23 @@
   }
 },
 {
+  "model": "pets_app.pet",
+  "pk": 6,
+  "fields": {
+    "name": "Sparty",
+    "gender": "M",
+    "birth": "2010-06-13",
+    "owner": "Rhea",
+    "weight": "12.00",
+    "height": "6.00",
+    "card": 5,
+    "picture": "default_dog_AJyF6Jb.jpg",
+    "breed": [
+      9
+    ]
+  }
+},
+{
   "model": "pets_app.vetvisit",
   "pk": 1,
   "fields": {
@@ -115,6 +170,26 @@
     "vet": "Jane Doe",
     "date": "2023-04-30",
     "notes": "healthy puppy"
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 2,
+  "fields": {
+    "pet": 1,
+    "vet": "unknown",
+    "date": "2025-07-21",
+    "notes": "rabies vaccination"
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 3,
+  "fields": {
+    "pet": 2,
+    "vet": "unknown",
+    "date": "2025-07-21",
+    "notes": "rabies vaccination"
   }
 }
 ]
