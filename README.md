@@ -47,13 +47,13 @@ Pets_Application/
 └── README.md                    # ← you are here
 ```
 
-### Important Integration Points:
+## Important Integration Points:
 
 - **Database:** MySQL database hosted on Amazon RDS
 
 - **Static Files:** Stored on Amazon S3
 
-### Infrastructure
+## Infrastructure
 
 The application utilizes the following AWS resources:
 - **EC2:** Hosts the Django application
@@ -107,7 +107,7 @@ $ python manage.py createsuperuser
 ```
 Open [http://127.0.0.1:8000](http://127.0.0.1:8000) for the public site and `/admin` for the admin console.
 
-### The Website Loads With Pet Card Fixtures:
+## The Website Loads With Pet Card Fixtures:
 ![Django Pets Application](./django/media/pets-grid.png)
 
 - SQL query to verify the **Pets Table** has loaded:
@@ -281,11 +281,9 @@ commands:
 
 ---
 
-## Post-Deployment Checklist
-
 ## Required Code Changes & Files
 
-### 🔧 1. `pets_project/settings.py` Updates
+`pets_project/settings.py` Updates
 
 Ensure these environment-based configurations exist:
 
@@ -322,7 +320,7 @@ else:
 
 ---
 
-### `.ebextensions/django.config`
+`.ebextensions/django.config`
 
 Ensure this file exists in `django/.ebextensions/`:
 
@@ -352,7 +350,7 @@ Optionally inject environment variables in the same config or through EB CLI/Con
 
 ---
 
-### Django Project Root Files (`/django/` folder)
+Django Project Root Files (`/django/` folder)
 
 #### `Procfile`
 
@@ -435,58 +433,44 @@ DB_PORT=3306
 
 ---
 
-  # Potential Implementations – Pets Application
-The current Pets Application offers core features for pet record management via the Django admin. But there are major opportunities to expand this into a full-fledged **Pet Club community portal**:
+## Data Flow
 
-## User Features to Add 
+1. User requests arrive at the Django application.
 
-**User Registration & Login**
-Implement Django's built-in auth system or integrate with Amazon Cognito for scalable, cloud-native identity management and multi-factor authentication (MFA).
-    
-**User Profiles with Pet Cards** 
-- Extend the User model via a custom profile (e.g. OneToOneField) to associate users with multiple pets. Store images using Amazon S3 for reliable media hosting and secure URL expiration.
+2. Django processes the request, interacting with the MySQL database on RDS as needed.
+3. For product images and static files, Django interacts with the configured S3 bucket.
+4. The response is generated and sent back to the user.
 
-**Forum or Club Wall** 
-- Build a simple forum using Django models and templates. For future scalability, consider migrating discussions to Amazon DynamoDB with a Lambda-backed API or integrating Amazon Q Business for AI-powered user interactions.
-
-**Photo Gallery Uploads** 
-- Allow pet owners to upload and tag photos. Use AWS S3 with boto3 to manage secure uploads, and Amazon Rekognition for potential image classification or content moderation.
-
-**Pet Matching or Friend System** 
-- Create user relationships (e.g. followers/friends) using a many-to-many model. For more advanced matching, integrate Amazon Personalize for recommendation systems.
-
-**Search and Filter System** 
-- Enable breed, age, or status filters using Django QuerySets. For scale and performance, integrate Amazon OpenSearch Service to offload full-text search and filtering.
-
-## Communication Features
-
-**Email Notifications** 
-- Send appointment or event alerts via Django’s EmailBackend or offload to Amazon SES (Simple Email Service) for high deliverability and production-ready email flows.
-
-**Admin-to-User Messaging** 
-- Build a simple internal messaging system, and integrate Amazon SNS (Simple Notification Service) for real-time push notifications or email alerts to specific users or topics.
-
-**Pet Adoption Inquiry Forms** 
-- Allow users to express interest in pets. Use Django forms + views, then optionally integrate with AWS Step Functions or Lambda for a vetting/approval workflow.
-
-## Technical Improvements
-
-**Frontend Styling Upgrade** 
-- Migrate from default templates to Tailwind CSS or Bootstrap for modern UI. Consider React for dynamic interactions and use Amazon CloudFront for global delivery of static assets.
-
-**Responsive Design** 
-- Ensure all layouts are mobile-friendly with media queries and grid systems. Test using Amazon Device Farm for cross-device compatibility.
-
-**Test Coverage** 
-- Write unit and integration tests with pytest-django. Automate tests in GitHub Actions and deploy to Elastic Beanstalk only if tests pass.
-
-**Security Hardening**  
-  - Enforce HTTPS-only using Elastic Load Balancer (ELB).
-  - Store secrets in AWS Systems Manager Parameter Store or Secrets Manager.
-  - Enable CSRF protection, password validators, and session expiration settings in Django.
-  - Apply IAM-based access restrictions for media or storage buckets.
+   ```
+   [User] <-> [Django App] <-> [RDS MySQL]
+                    ^
+                    |
+                    v
+               [S3 Bucket]
 
 ---
+# Potential Implementations – Pets Application
+**The current Pets Application offers core features for pet record management via the Django admin. But there are major opportunities to expand this into a full-fledged Pet Club community portal.**
 
+  - **User Features to Add:**
+       - User Registration & Login
+       - User Profiles with Pet Cards
+       - Forum or Club Wall
+       - Photo Gallery Uploads 
+       - Pet Matching or Friend System
+       - Search and Filter System
+
+  - **Communication Features:**
+       - Email Notifications
+       - Admin-to-User Messaging
+       - Pet Adoption Inquiry Forms 
+
+  - **Technical Improvements:**
+       - Frontend Styling Upgrade
+       - Responsive Design
+       - Test Coverage 
+       - Security Hardening  
+
+---
 © 2025 Levi Breedlove – MIT License Amazon Web Services 
 
