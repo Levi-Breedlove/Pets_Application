@@ -435,13 +435,13 @@ DB_PORT=3306
 
 ---
 
-  # Potential Implementations – Pets Application
+# Potential Implementations – Pets Application
 The current Pets Application offers core features for pet record management via the Django admin. But there are major opportunities to expand this into a full-fledged **Pet Club community portal**:
 
 ## User Features to Add 
 
 **User Registration & Login**
-Implement Django's built-in auth system or integrate with Amazon Cognito for scalable, cloud-native identity management and multi-factor authentication (MFA).
+- Implement Django's built-in auth system or integrate with Amazon Cognito for scalable, cloud-native identity management and multi-factor authentication (MFA).
     
 **User Profiles with Pet Cards** 
 - Extend the User model via a custom profile (e.g. OneToOneField) to associate users with multiple pets. Store images using Amazon S3 for reliable media hosting and secure URL expiration.
