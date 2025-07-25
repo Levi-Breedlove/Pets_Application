@@ -1,0 +1,253 @@
+[
+{
+  "model": "pets_app.breed",
+  "pk": 2,
+  "fields": {
+    "name": "Golden Retriever",
+    "weight": "80.00",
+    "height": "10.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 3,
+  "fields": {
+    "name": "German Spitz",
+    "weight": "80.00",
+    "height": "10.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 4,
+  "fields": {
+    "name": "Cavalier King Charles Spaniel",
+    "weight": null,
+    "height": null
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 5,
+  "fields": {
+    "name": "Rabbit",
+    "weight": "0.00",
+    "height": "0.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 9,
+  "fields": {
+    "name": "Chihuahua Yorkie",
+    "weight": "0.00",
+    "height": "0.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 11,
+  "fields": {
+    "name": "Mini Rex - Dwarf Rabbit",
+    "weight": "3.00",
+    "height": "2.00"
+  }
+},
+{
+  "model": "pets_app.breed",
+  "pk": 12,
+  "fields": {
+    "name": "Cute Cat",
+    "weight": "3.00",
+    "height": "2.00"
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 1,
+  "fields": {
+    "rabies": "2021-07-19",
+    "hepatitis": "2021-08-01",
+    "borrelia": "2025-04-15",
+    "distemper": "2021-02-09"
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 2,
+  "fields": {
+    "rabies": "2024-08-16",
+    "hepatitis": "2023-07-06",
+    "borrelia": null,
+    "distemper": "2023-12-09"
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 3,
+  "fields": {
+    "rabies": "2022-06-01",
+    "hepatitis": null,
+    "borrelia": null,
+    "distemper": null
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 4,
+  "fields": {
+    "rabies": "2025-07-21",
+    "hepatitis": null,
+    "borrelia": null,
+    "distemper": null
+  }
+},
+{
+  "model": "pets_app.vaccinationcard",
+  "pk": 5,
+  "fields": {
+    "rabies": "2025-07-21",
+    "hepatitis": null,
+    "borrelia": null,
+    "distemper": null
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 1,
+  "fields": {
+    "name": "Tucker",
+    "gender": "M",
+    "birth": "2020-05-19",
+    "owner": "Fernando",
+    "weight": "80.00",
+    "height": "20.00",
+    "card": 1,
+    "picture": "tucker_pic.jpg",
+    "breed": [
+      2
+    ]
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 2,
+  "fields": {
+    "name": "Moose",
+    "gender": "M",
+    "birth": "2022-07-12",
+    "owner": "Fernando",
+    "weight": "20.00",
+    "height": "12.00",
+    "card": 2,
+    "picture": "moose_pic.jpg",
+    "breed": [
+      3
+    ]
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 3,
+  "fields": {
+    "name": "Max",
+    "gender": "F",
+    "birth": "2006-03-24",
+    "owner": "Ashley",
+    "weight": "23.00",
+    "height": "9.00",
+    "card": 3,
+    "picture": "default_dog.jpg",
+    "breed": []
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 4,
+  "fields": {
+    "name": "Sparty",
+    "gender": "M",
+    "birth": "2010-06-13",
+    "owner": "Rhea",
+    "weight": "12.00",
+    "height": "6.00",
+    "card": 5,
+    "picture": "sparty.png",
+    "breed": [
+      4
+    ]
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 5,
+  "fields": {
+    "name": "Pierre",
+    "gender": "M",
+    "birth": "2024-01-13",
+    "owner": "Allie",
+    "weight": "3.00",
+    "height": "2.00",
+    "card": null,
+    "picture": "bunny.png",
+    "breed": []
+  }
+},
+{
+  "model": "pets_app.pet",
+  "pk": 6,
+  "fields": {
+    "name": "Woody",
+    "gender": "M",
+    "birth": "2024-01-13",
+    "owner": "Rhea",
+    "weight": "3.00",
+    "height": "2.00",
+    "card": null,
+    "picture": "woody.png",
+    "breed": [
+      9
+    ]
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 1,
+  "fields": {
+    "pet": 4,
+    "vet": "Jane Doe",
+    "date": "2023-04-30",
+    "notes": "healthy puppy"
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 2,
+  "fields": {
+    "pet": 1,
+    "vet": "unknown",
+    "date": "2025-07-21",
+    "notes": "rabies vaccination"
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 3,
+  "fields": {
+    "pet": 2,
+    "vet": "unknown",
+    "date": "2025-07-21",
+    "notes": "rabies vaccination"
+  }
+},
+{
+  "model": "pets_app.vetvisit",
+  "pk": 4,
+  "fields": {
+    "pet": 6,
+    "vet": "Unknown",
+    "date": "2025-07-22",
+    "notes": "rabies vaccination"
+  }
+}
+]
